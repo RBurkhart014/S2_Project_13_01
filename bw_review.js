@@ -5,8 +5,8 @@
    Tutorial 11
    Case Problem 1
 
-   Author: 
-   Date:   
+   Author: Ryan Burkhart
+   Date: 3/13/19  
    
    Filename: bw_review.js
 	
@@ -33,6 +33,10 @@
       within textStr
 
 */
+
+function init() {
+   
+}
 
 
 
