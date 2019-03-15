@@ -33,11 +33,24 @@
       within textStr
 
 */
+window.onload = init;
 
 function init() {
-   
+   var stars = document.querySelectorAll("span#stars img");
+   for (var i = 0; i < stars.length; i++) {
+         stars[i].style.cursor = "pointer";
+         document.addEventListener("mouseenter", lightStars());
+   }
+   document.getElementById("commentField").addEventListener("keyup", Count());
 }
 
+function lightStars() {
+      var starNumber = event.target.alt;
+      var stars = document.querySelectorAll("span#stars img");
+      for (var i = 0; i < starNumber.length; i++) {
+            stars[i].src = "url(bw_star2.png)";
+      }
+}
 
 
   
