@@ -39,26 +39,56 @@ function init() {
    var stars = document.querySelectorAll("span#stars img");
    for (var i = 0; i < stars.length; i++) {
          stars[i].style.cursor = "pointer";
-         document.addEventListener("mouseenter", lightStars());
+         stars[i].addEventListener("mouseenter", lightStars);
    }
-   document.getElementById("commentField").addEventListener("keyup", Count());
+   document.getElementById("comment").addEventListener("keyup", updateCount);
 }
 
-function lightStars() {
-      var starNumber = event.target.alt;
+function lightStars(e) {
+      var starNumber = e.target.alt;
       var stars = document.querySelectorAll("span#stars img");
-      for (var i = 0; i < starNumber.length; i++) {
-            stars[i].src = "url(bw_star2.png)";
+      for (var i = 0; i < starNumber; i++) {
+            stars[i].src = "bw_star2.png";
+      }
+      for (var i = starNumber; i < 5; i++) {
+            stars[i].src = "bw_star.png";
+      }
+      document.getElementById("rating").value = starNumber + " star(s)";
+      e.target.addEventListener("mouseleave", turnOffStars);
+      e.target.addEventListener("click", function() {
+            e.target.removeEventListener("mouseleave", turnOffStars);
+      });
+}
+
+function turnOffStars(e) {
+      var stars = document.querySelectorAll("span#stars img");
+      for (var i = 0; i < stars.length; i++) {
+            stars[i].src = "bw_star.png";      
+      document.getElementById("rating").value = "";
+}
+}
+
+function updateCount() {
+      var commentText = document.getElementById("comment").value;
+      var charCount = countCharacters(commentText) ;
+      var wordCountBox = document.getElementById("wordCount");
+      wordCountBox.value = charCount + "/1000";
+      if (charCount > 1000) {
+            wordCountBox.style.color = "white";
+            wordCountBox.style.backgroundColor = "red";
+      } else {
+            wordCountBox.style.color = "black";
+            wordCountBox.style.backgroundColor = "white";
       }
 }
 
 
-  
 
 
-  
-  
-  
+
+
+
+ 
 /*=================================================================*/
 
 function countCharacters(textStr) {
