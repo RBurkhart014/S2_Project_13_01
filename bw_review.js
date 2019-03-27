@@ -44,6 +44,8 @@ function init() {
    document.getElementById("comment").addEventListener("keyup", updateCount);
 }
 
+//This made it therefore the textbox displaying "Stars" appears next to the actual stars
+
 function lightStars(e) {
       var starNumber = e.target.alt;
       var stars = document.querySelectorAll("span#stars img");
@@ -60,6 +62,8 @@ function lightStars(e) {
       });
 }
 
+//This made it so when you click on a star itll highlight yellow/gold and if you move the mouse off itll disappear
+
 function turnOffStars(e) {
       var stars = document.querySelectorAll("span#stars img");
       for (var i = 0; i < stars.length; i++) {
@@ -67,6 +71,8 @@ function turnOffStars(e) {
       document.getElementById("rating").value = "";
 }
 }
+
+//This allowed the stars to be clicked on & held in position when the mouse moves off
 
 function updateCount() {
       var commentText = document.getElementById("comment").value;
@@ -82,7 +88,7 @@ function updateCount() {
       }
 }
 
-
+//This allowed the word count to not submit anything past 1000 characters
 
 
 
